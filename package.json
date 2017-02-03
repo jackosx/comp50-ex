@@ -1,0 +1,11 @@
+{
+  "name": "comp50-ex",
+  "version": "1.0.0",
+  "description": "Example for Comp50 Security",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jack O'Shea and Spencer Perry",
+  "license": "ISC"
+}
