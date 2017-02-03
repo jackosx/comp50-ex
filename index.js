@@ -1,4 +1,4 @@
-import express from "express";
+var express = require('express');
 
 const PORT = process.env.PORT || 5000;
 app = express();
