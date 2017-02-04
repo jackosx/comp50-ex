@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Victims</title>
+  <link rel="stylesheet" type="text/css" href="victimcount.css">
+</head>
+<body>
+  <div>
+    <div> Users Infected:</div>
+    <div id="count">0<div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+  <script>
+  setInterval(function(){$.get('/victimcount',function (result){
+    $('#count').html(result);
+  })}, 5000);
+  </script>
+</body>
+</html>

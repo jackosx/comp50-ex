@@ -10,7 +10,7 @@ const addVictim = (victimID) => {
 const getVictim = (victimID) => victims.find((v) => v.victimID == victimID);
 
 const addCommand = (command, victim) => {
-   if (parseInt(victim) != 'NaN')
+   if (!isNaN(victim))
      victim = getVictim(victim);
    victim.commands ? victim.commands.push(command) : (victim.commands = [command]);
  }
