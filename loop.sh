@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-os_type='uname -r'
+os_type=$(uname -r)
 
 substring=$(echo $os_type | cut -d '-' -f 2)
 
