@@ -5,7 +5,7 @@ os_type='uname -r'
 
 substring=$(echo $os_type | cut -d '-' -f 2)
 
-if [ "$os_type" != kalil ]
+if [ "$os_type" != kali1 ]
 then
 	exit
 fi
