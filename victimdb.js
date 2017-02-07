@@ -14,11 +14,12 @@ const addCommand = (command, victim) => {
    if (!isNaN(victim))
      victim = getVictim(victim); // get victim object if number is passed
    victim.commands ? victim.commands.push(command) : (victim.commands = [command]);
+   console.log("Victim commands: ",victim.commands);
  }
 
 const getNextCommand = (victim) => {
   declareActive(victim);
-  victim.commands ? victim.commands.pop() : null
+  return victim.commands ? victim.commands.pop() : null;
 };
 
 const getVictimCount = () => victims.length;

