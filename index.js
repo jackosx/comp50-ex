@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyparser = require('body-parser');
-const victimDB = require('./victimdb');
+// const victimDB = require('./victimdb');
 
 const PORT = process.env.PORT || 5000;
 app = express();
