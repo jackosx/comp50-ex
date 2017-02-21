@@ -9,6 +9,7 @@
   "author": "Jack O'Shea and Spencer Perry",
   "license": "ISC",
   "dependencies": {
+    "express": "latest",
     "body-parser": "^1.16.0"
   }
 }
