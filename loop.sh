@@ -1,9 +1,11 @@
 #!/bin/bash
 
 
-os_type='uname -r'
+os_type=$(uname -r)
 
-if [ "$os_type" != "4.6.0-kali-amd64" ]
+substring=$(echo $os_type | cut -d '-' -f 2)
+
+if [ "$substring" != "kali1" ]
 then
 	exit
 fi
