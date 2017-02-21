@@ -1,1 +1,1 @@
-web: node index.js
+web: echo starting && node index.js
